@@ -8,7 +8,7 @@ En otros módulos
 
 
 filacli = ()
-listclientes = ()su
+listclientes = ()
 treeclientes = ()
 lblerrordni = ()
 listado = ()
