@@ -75,7 +75,7 @@
   <object class="GtkImage" id="imgBackup">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/backup.png</property>
+    <property name="pixbuf">img/backup.png</property>
   </object>
   <object class="GtkImage" id="imgCalc">
     <property name="visible">True</property>
@@ -84,58 +84,58 @@
     <property name="margin_right">2</property>
     <property name="margin_top">2</property>
     <property name="margin_bottom">2</property>
-    <property name="pixbuf">../img/calculator.png</property>
+    <property name="pixbuf">img/calculator.png</property>
   </object>
   <object class="GtkImage" id="imgCalendar">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/calendar.ico</property>
+    <property name="pixbuf">img/calendar.ico</property>
   </object>
   <object class="GtkImage" id="imgCalendar1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/calendar.ico</property>
+    <property name="pixbuf">img/calendar.ico</property>
   </object>
   <object class="GtkImage" id="imgCalendar2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/calendar.ico</property>
+    <property name="pixbuf">img/calendar.ico</property>
   </object>
   <object class="GtkImage" id="imgDouble">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/bedDouble.png</property>
+    <property name="pixbuf">img/bedDouble.png</property>
   </object>
   <object class="GtkImage" id="imgFamily">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/family.png</property>
+    <property name="pixbuf">img/family.png</property>
   </object>
   <object class="GtkImage" id="imgHabitacion">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/hab.png</property>
+    <property name="pixbuf">img/hab.png</property>
   </object>
   <object class="GtkImage" id="imgImprimir">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="tooltip_text" translatable="yes">Imprimir Factura</property>
-    <property name="pixbuf">../img/printer.png</property>
+    <property name="pixbuf">img/printer.png</property>
   </object>
   <object class="GtkImage" id="imgReservas">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/reserved.png</property>
+    <property name="pixbuf">img/reserved.png</property>
   </object>
   <object class="GtkImage" id="imgSalirTool">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/logout.png</property>
+    <property name="pixbuf">img/logout.png</property>
   </object>
   <object class="GtkImage" id="imgSimple">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">../img/bed.png</property>
+    <property name="pixbuf">img/bed.png</property>
   </object>
   <object class="GtkImage" id="imgToolCli">
     <property name="visible">True</property>
@@ -144,7 +144,7 @@
     <property name="margin_right">2</property>
     <property name="margin_top">2</property>
     <property name="margin_bottom">2</property>
-    <property name="pixbuf">../img/client.png</property>
+    <property name="pixbuf">img/client.png</property>
   </object>
   <object class="GtkListStore" id="listClientes">
     <columns>
