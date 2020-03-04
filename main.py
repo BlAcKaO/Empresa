@@ -104,9 +104,9 @@ class Empresa:
         variables.lblconcepto4 = b.get_object('lblConcepto4')
         variables.lbltotaulunifac4 = b.get_object('lblTotalUniFac4')
 
-        variables.filaservicios = (variables.lblconcepto1, variables.lblconcepto2, variables.lblconcepto3, variables.lblconcepto4, variables.lbltotaulunifac1, variables.lbltotaulunifac2, variables.lbltotaulunifac3, variables.lbltotaulunifac4)
+        variables.filaserviciosfac = (variables.lblconcepto1, variables.lblconcepto2, variables.lblconcepto3, variables.lblconcepto4, variables.lbltotaulunifac1, variables.lbltotaulunifac2, variables.lbltotaulunifac3, variables.lbltotaulunifac4)
 
-        # Variables reservas
+        # Variables servicios
         variables.lblcodres = b.get_object('lblCodRes')
         variables.lblhabres = b.get_object('lblHabRes')
         variables.chkparking = b.get_object('chkParking')

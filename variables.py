@@ -89,6 +89,8 @@ lblconcepto4 = None
 lblunidadesfac4 = None
 lblpreciounidadfac4 = None
 lbltotaulunifac4 = None
+servicios = None
+filaserviciosfac = None
 
 # Variables servicios
 

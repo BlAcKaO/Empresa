@@ -586,6 +586,8 @@ class Eventos:
                 variables.filafacturacion[2].set_text(str(funcionesHab.findPrecio(habitacion))) #Metodo que devuelva el precio de la habitacion
                 variables.filafacturacion[3].set_text(str(funcionesHab.precioTotal(noches,funcionesHab.findPrecio(habitacion)))) #Método que calcule el total a pagar
 
+                #variables.filaservicios[0].set_text()
+
                 
 
                 variables.datosfactura = (variables.lblcodigoreserva,variables.lblfechafacturacion,variables.lbldnifacturacion,variables.lblhabitacionfacturacion,variables.lblapellidosfacturacion,variables.lblnombrefacturacion)
