@@ -528,6 +528,9 @@ class Eventos:
                 funcionesReservas.listadoreservas(variables.listreservas)
                 funcionesReservas.clearEntry(variables.filareserva)
 
+            else:
+                pass
+
 
         except Exception as e:
             print("Error modificar Reserva", e)
