@@ -136,9 +136,10 @@ def buscarServicios(codRes):
     Retorna el valor del concepto.
     """
     try:
-        conexion.cur.execute('select concepto from Servicios where codRes = ?', (codRes,))
+        conexion.cur.execute('select concepto, precio from Servicios where codRes = ?', (codRes,))
         concepto = conexion.cur.fetchall()
         conexion.conex.commit()
+        print(concepto)
         return concepto
     except sqlite3.OperationalError as e:
         print(e)

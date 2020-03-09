@@ -436,13 +436,13 @@ class Eventos:
             variables.vendialogcorrecto.show()
             print(e)
 
-    
+
 
     def on_btnCancelarDialog_clicked(self,widget):
         variables.venfiledialog.connect('delete-event', lambda w, e: w.hide() or True)
         variables.venfiledialog.hide()
 
-    
+
 
     def on_btnAceptarRdy_clicked(self,widget):
         variables.vendialogcorrecto.connect('delete-event', lambda w, e: w.hide() or True)
@@ -564,6 +564,7 @@ class Eventos:
                 noches = model.get_value(iter,5)
                 habitacion = model.get_value(iter,2)
                 funcionesReservas.buscarHabitacion(habitacion)
+                codres = str(funcionesReservas.findID(dni,habitacion))
 
                 variables.filareserva[0].set_text(str(dni))
                 variables.saveDni = dni
@@ -578,7 +579,7 @@ class Eventos:
                 variables.lblcodigoreserva.set_text(str(funcionesReservas.findID(dni,habitacion))) # Poner método que busque el codigo de la reserva
                 variables.lblhabitacionfacturacion.set_text(str(habitacion))
                 variables.lblfechafacturacion.set_text(str(checkout))
-                variables.lblcodres.set_text(str(funcionesReservas.findID(dni,habitacion)))
+                variables.lblcodres.set_text(codres)
                 variables.lblhabres.set_text(str(habitacion))
 
                 variables.filafacturacion[0].set_text(variables.lblnochesfac.get_text())
@@ -586,9 +587,15 @@ class Eventos:
                 variables.filafacturacion[2].set_text(str(funcionesHab.findPrecio(habitacion))) #Metodo que devuelva el precio de la habitacion
                 variables.filafacturacion[3].set_text(str(funcionesHab.precioTotal(noches,funcionesHab.findPrecio(habitacion)))) #Método que calcule el total a pagar
 
-                #variables.filaservicios[0].set_text()
+                #Seguir aqui
+                servicios = funcionesServ.buscarServicios(codres)
+                precio = str(servicios[0][1])
+                variables.filaserviciosfac[0].set_text(servicios[0][0])
+                variables.filaserviciosfac[1].set_text(precio)
+                variables.filaserviciosfac[2].set_text(str(servicios[1][0]))
+                variables.filaserviciosfac[3].set_text(str(servicios[1][1]))
 
-                
+
 
                 variables.datosfactura = (variables.lblcodigoreserva,variables.lblfechafacturacion,variables.lbldnifacturacion,variables.lblhabitacionfacturacion,variables.lblapellidosfacturacion,variables.lblnombrefacturacion)
 
@@ -596,7 +603,7 @@ class Eventos:
             print("Error TreeView Reservas ",e)
 
 
-    
+
     def on_btnPrintFac_clicked(self,widget):
         try:
 
