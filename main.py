@@ -4,7 +4,7 @@ gi.require_version('Gtk','3.0')
 from gi.repository import Gtk, Gdk
 import eventos, conexion, variables, funcionesCli, funcionesHab, funcionesReservas, funcionesServ
 
-"""El main contiene los elemnentos necesarios para lanzar la aplicación
+"""El main contiene los elementos necesarios para lanzar la aplicación
 asi como la decleración de los widgets que se usarán. También los módulos
 que tenemos que importar de las librerías gráficas.
 
