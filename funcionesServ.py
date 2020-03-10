@@ -110,6 +110,7 @@ def listadoSer(listservicios):
         conexion.conex.rollback()
 
 
+
 def selectServicios(cod):
     """
     Devuelve los datos de un servicio por su codigo.

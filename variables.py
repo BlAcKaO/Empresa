@@ -96,6 +96,8 @@ lbltotal = None
 lbliva = None
 subtotal = 0
 iva = 0
+mensfac = None
+linfacfinal = None
 
 # Variables servicios
 

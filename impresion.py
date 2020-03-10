@@ -6,7 +6,7 @@ Este módulo contiene las funciones siguientes:
 """
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
-import os, funcionesCli, variables
+import os, funcionesCli, variables, funcionesServ
 
 #Hecho sin IDE
 
@@ -101,32 +101,41 @@ def factura():
         for i in range (0,4):
             bill.drawString(x,645, text9[i])
             x += 132
+        listado = funcionesServ.buscarServicios(str(variables.datosfactura[0].get_text()))
+        x = 75
+        y = 620
+        bill.drawString(x, y, 'Noches')
+        x += 150
 
+        for i in range(5,8):
+            if i == 7:
+                x += 34
+                bill.drawRightString(x,y, (variables.mensfac[i].get_text() + ' €'))
+            else:
+                bill.drawString(x,y, variables.mensfac[i].get_text())
+            x = x + 123
 
+        x = 74
+        y = y - 20
+        for registro in listado:
+            for i in range(2):
+                if i == 1:
+                    x += 40
+                    bill.drawRightString(x, y, str(registro[i]) + ' €')
+                else:
+                    bill.drawString(x, y, str(registro[i]))
+                x = 390 + x
+            y = y - 20
+            x = 75
 
-        bill.setFont('Helvetica', size=10)
-        bill.drawString(85,625, variables.filafacturacion[0].get_text())
-
-
-
-        bill.setFont('Helvetica', size=10)
-        bill.drawString(250,625, variables.filafacturacion[1].get_text())
-
-
-        if (len(str(variables.filafacturacion[2].get_text())) -3) >= 3:
-            bill.setFont('Helvetica', size=10)
-            bill.drawString(380, 625, variables.filafacturacion[2].get_text())
-            print(len(str(variables.filafacturacion[2].get_text())))
-        else:
-            bill.setFont('Helvetica', size=10)
-            bill.drawString(395, 625, variables.filafacturacion[2].get_text())
-            print(len(str(variables.filafacturacion[2].get_text())))
-
-
-
-        bill.setFont('Helvetica', size=10)
-        bill.drawString(470,625, variables.filafacturacion[3].get_text())
-
+        bill.line(50, 120, 540, 120)
+        textsubt = ('Subtotal : ' + variables.linfacfinal[0].get_text())
+        bill.drawRightString(495, 100, str(textsubt))
+        textiva = ('IVA:   ' + variables.linfacfinal[1].get_text())
+        bill.drawRightString(495, 80, str(textiva))
+        texttotal = ('TOTAL:   ' + variables.linfacfinal[2].get_text())
+        bill.drawRightString(495, 60, str(texttotal))
+        bill.line(50, 635, 540, 635)
         bill.showPage()
         bill.save()
         dir = os.getcwd()

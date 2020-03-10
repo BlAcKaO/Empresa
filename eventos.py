@@ -589,11 +589,11 @@ class Eventos:
                 variables.filafacturacion[3].set_text(str(totalNoches)) #Método que calcule el total a pagar
 
                 #Seguir aqui
-                servicios = funcionesServ.buscarServicios(codres)
-                for i in range(len(servicios)):
-                    variables.filaserviciosfac[i][0].set_text(servicios[i][0])
-                    variables.filaserviciosfac[i][1].set_text(str(servicios[i][1]))
-                    variables.subtotal = variables.subtotal + servicios[i][1]
+                variables.servicios = funcionesServ.buscarServicios(codres)
+                for i in range(len(variables.servicios)):
+                    variables.filaserviciosfac[i][0].set_text(variables.servicios[i][0])
+                    variables.filaserviciosfac[i][1].set_text(str(variables.servicios[i][1]))
+                    variables.subtotal = variables.subtotal + variables.servicios[i][1]
 
                 variables.subtotal = variables.subtotal + totalNoches
                 variables.iva = totalNoches*0.1 + variables.subtotal*0.2

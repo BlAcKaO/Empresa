@@ -94,6 +94,11 @@ class Empresa:
         variables.lbltotalunifac = b.get_object('lblTotalUniFac')
         
         variables.filafacturacion = (variables.lblnochesfac, variables.lblunidadesfac, variables.lblpreciounidadfac, variables.lbltotalunifac)
+        variables.mensfac = (variables.lbldnifacturacion, variables.lblapellidosfacturacion,
+                             variables.lblcodigoreserva, variables.lblnombrefacturacion,
+                             variables.lblhabitacionfacturacion, variables.lblunidadesfac,
+                             variables.lblpreciounidadfac,variables.lbltotalunifac,
+                             variables.lblfechafacturacion)
 
         variables.lblconcepto1 = b.get_object('lblConcepto1')
         variables.lbltotaulunifac1 = b.get_object('lblTotalUniFac1')
@@ -111,6 +116,7 @@ class Empresa:
         variables.lblsubtotal = b.get_object('lblSubTotal')
         variables.lbltotal = b.get_object('lblTotal')
         variables.lbliva = b.get_object('lblIVA')
+        variables.linfacfinal = (variables.lblsubtotal, variables.lbliva, variables.lbltotal)
 
         # Variables servicios
         variables.lblcodres = b.get_object('lblCodRes')
