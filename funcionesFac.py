@@ -8,6 +8,10 @@ Este módulo contiene las funciones siguientes:
 import conexion, sqlite3, variables
 from datetime import datetime
 
+def calcularTotal():
+    total = variables.subtotal + variables.iva
+    return total
+
 def buscarServicios(codRes):
     try:
         conexion.cur.execute('select * from Servicios where codRes = ?', (codRes))

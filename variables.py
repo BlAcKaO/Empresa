@@ -91,6 +91,11 @@ lblpreciounidadfac4 = None
 lbltotaulunifac4 = None
 servicios = None
 filaserviciosfac = None
+lblsubtotal = None
+lbltotal = None
+lbliva = None
+subtotal = 0
+iva = 0
 
 # Variables servicios
 

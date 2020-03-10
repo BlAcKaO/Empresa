@@ -2,7 +2,7 @@
 import datetime
 import xlrd
 
-import gi, conexion, variables, funcionesCli, funcionesHab, zipfile, shutil, os, funcionesReservas, impresion, sqlite3, xlwt, funcionesServ
+import gi, conexion, variables, funcionesCli, funcionesHab, zipfile, shutil, os, funcionesReservas, impresion, sqlite3, xlwt, funcionesServ, funcionesFac
 from gi.repository import Gtk, Gdk
 from subprocess import call
 from datetime import datetime
@@ -585,15 +585,25 @@ class Eventos:
                 variables.filafacturacion[0].set_text(variables.lblnochesfac.get_text())
                 variables.filafacturacion[1].set_text(str(noches))
                 variables.filafacturacion[2].set_text(str(funcionesHab.findPrecio(habitacion))) #Metodo que devuelva el precio de la habitacion
-                variables.filafacturacion[3].set_text(str(funcionesHab.precioTotal(noches,funcionesHab.findPrecio(habitacion)))) #Método que calcule el total a pagar
+                totalNoches = funcionesHab.precioTotal(noches,funcionesHab.findPrecio(habitacion))
+                variables.filafacturacion[3].set_text(str(totalNoches)) #Método que calcule el total a pagar
 
                 #Seguir aqui
                 servicios = funcionesServ.buscarServicios(codres)
-                precio = str(servicios[0][1])
-                variables.filaserviciosfac[0].set_text(servicios[0][0])
-                variables.filaserviciosfac[1].set_text(precio)
-                variables.filaserviciosfac[2].set_text(str(servicios[1][0]))
-                variables.filaserviciosfac[3].set_text(str(servicios[1][1]))
+                for i in range(len(servicios)):
+                    variables.filaserviciosfac[i][0].set_text(servicios[i][0])
+                    variables.filaserviciosfac[i][1].set_text(str(servicios[i][1]))
+                    variables.subtotal = variables.subtotal + servicios[i][1]
+
+                variables.subtotal = variables.subtotal + totalNoches
+                variables.iva = totalNoches*0.1 + variables.subtotal*0.2
+
+                variables.lblsubtotal.set_text(str(round(variables.subtotal,2)))
+                variables.lbliva.set_text(str(round(variables.iva,2)))
+
+                total = funcionesFac.calcularTotal()
+                total = round(total,2)
+                variables.lbltotal.set_text(str(total))
 
 
 

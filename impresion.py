@@ -21,20 +21,22 @@ def basico():
         global bill
         bill = canvas.Canvas('prueba.pdf', pagesize = A4)
         text1 = 'Bienvenido a nuestro hotel'
-        bill.drawImage("img/hotel.png", 475, 680, width=64, height=64)
+        text2 = 'CIF:00000000A'
+        bill.drawImage("img/hotel.png", 475, 670, width=64, height=64)
         bill.setFont('Helvetica-Bold', size= 16)
-        bill.drawString(250, 780, 'Hote Lite')
+        bill.drawString(250, 780, 'HOTEL LITE')
 
         bill.setFont('Times-Italic', size = 10)
         bill.drawString(240, 765, text1)
+        bill.drawString(260, 755, text2)
 
-        bill.line(40, 670, 540, 670)
+        bill.line(50, 660, 540, 660)
 
         textpie = ('Hotel Lite, CIF = 000000000A, Tlf = 986000000, email =  info"hotelite.com')
-        bill.setFont('Times-Italic', size = 9)
-        bill.drawString(165, 20, textpie)
+        bill.setFont('Times-Italic', size = 7)
+        bill.drawString(170, 20, textpie)
 
-        bill.line(40, 35, 540, 35)
+        bill.line(50, 30, 540, 30)
 
 
     except Exception as e:
@@ -53,12 +55,10 @@ def factura():
 
         bill.setFont('Helvetica-Bold', size = 9)
         text3 = 'Nº de Factura:'
-        bill.drawString(40, 740, text3)
+        bill.drawString(50, 735, text3)
 
         bill.setFont('Helvetica', size = 8)
-        bill.drawString(110,740,variables.datosfactura[0].get_text())
-
-    
+        bill.drawString(140,735,variables.datosfactura[0].get_text())
 
         bill.setFont('Helvetica-Bold', size = 8)
         text4 = 'Fecha Factura:'
@@ -67,49 +67,40 @@ def factura():
         bill.setFont('Helvetica', size = 8)
         bill.drawString(385,740, variables.datosfactura[1].get_text())
 
-    
+        bill.setFont('Helvetica-Bold', size=8)
+        text5 = 'DNI CLIENTE:'
+        bill.drawString(50, 710, text5)
+
+        bill.setFont('Helvetica', size=8)
+        bill.drawString(120, 710, variables.datosfactura[2].get_text())
 
         bill.setFont('Helvetica-Bold', size=8)
-        text5 = 'DNI Cliente:'
-        bill.drawString(40,710, text5)
+        text6 = 'Nº de Habitación:'
+        bill.drawString(320, 710, text6)
 
-        bill.setFont('Helvetica', size = 8)
-        bill.drawString(110, 710, variables.datosfactura[2].get_text())
-
-    
-
-        bill.setFont('Helvetica-Bold', size=8)
-        text6 = 'Habitacion: '
-        bill.drawString(320, 710,text6)
-
-        bill.setFont('Helvetica', size = 8)
-        bill.drawString(385,710, variables.datosfactura[3].get_text())
-
-    
+        bill.setFont('Helvetica', size=8)
+        bill.drawString(385, 710, variables.datosfactura[3].get_text())
 
         apelnome = funcionesCli.apelnomfac(variables.datosfactura[2].get_text())
         bill.setFont('Helvetica-Bold',size = 8)
         text7 = 'Apellidos: '
-        bill.drawString(40,680,text7)
+        bill.drawString(50,680,text7)
         bill.setFont('Helvetica', size=8)
         bill.drawString(110,680, apelnome[0])
 
-
-
         bill.setFont('Helvetica-Bold',size = 8)
         text8 = 'Nombre:'
-        bill.drawString(320,680,text8)
+        bill.drawString(300,680,text8)
+
         bill.setFont('Helvetica', size=8)
-        bill.drawString(385,680, apelnome[1])
-
-
+        bill.drawString(350,680, apelnome[1])
 
         bill.setFont('Helvetica-Bold', size = 10)
         text9 = ['CONCEPTO', 'UNIDADES', 'PRECIO/UNIDAD', 'TOTAL']
         x = 75
         for i in range (0,4):
             bill.drawString(x,645, text9[i])
-            x += 130
+            x += 132
 
 
 
