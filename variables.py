@@ -30,6 +30,7 @@ panel = None
 
 venacercade = None
 venfile = None
+venfileclientes = None
 menubar = None
 #vendialog = None
 lblmensajedialog = None
@@ -112,3 +113,6 @@ entconcepto = None
 entprecioserv = None
 saveCodigoReserva = None
 treeservicios = None
+
+#variables venFile
+lblfile = None

@@ -137,7 +137,6 @@ def listadoreservas(listreservas):
     """
     try:
         variables.listado = listar()
-        print(variables.listado)
         listreservas.clear()
         for registro in variables.listado:
             listreservas.append(registro[0:6])

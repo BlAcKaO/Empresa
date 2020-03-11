@@ -139,7 +139,6 @@ def listadocli(listclientes):
     """
     try:
         variables.listado = listar()
-        print(variables.listado)
         listclientes.clear()
         for registro in variables.listado:
             codigo = variables.listado[0]

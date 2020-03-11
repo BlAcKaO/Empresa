@@ -51,12 +51,14 @@ class Empresa:
         variables.venacercade = b.get_object('venAbout')
 
         variables.venfile = b.get_object('venFile')
+        variables.venfileclientes = b.get_object('venFileClientes')
         variables.menubar = b.get_object('menuBar').get_style_context()
 
         # Preparando para backup
         #variables.vendialog = b.get_object('venDialog')
         variables.lblmensajedialog = b.get_object('lblMensajeDialog')
         variables.vendialogcorrecto = b.get_object('venDialogCorrecto')
+        variables.venfiledialog = b.get_object('venFileDialog')
         variables.venfiledialog = b.get_object('venFileDialog')
 
         variables.filahab = (self.entnumero, self.entprecio)
@@ -131,6 +133,9 @@ class Empresa:
         variables.filaservicios = (variables.lblcodres, variables.lblhabres, variables.entconcepto, variables.entprecioserv)
 
         b.connect_signals(eventos.Eventos())
+
+        #Variables venfile
+        variables.lblfile = b.get_object('lblFile')
 
         # Estilos
         self.set_styles()

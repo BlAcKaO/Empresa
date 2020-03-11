@@ -498,7 +498,6 @@ class Eventos:
         try:
             dni = variables.filareserva[0].get_text()
             fecha = variables.filareserva[2].get_text()
-            print(dni)
 
             if dni != '':
                 funcionesReservas.bajasReservas(dni,fecha)
@@ -624,9 +623,23 @@ class Eventos:
             print('Error evento impresion',e)
 
     def on_menuBarImportar_activate(self, widget):
-
         try:
-            document = xlrd.open_workbook("../listadoclientes.xlsx")
+            conexion.Conexion.cerrarBBDD(self)
+            variables.venfileclientes.show()
+            conexion.Conexion.abrirBBDD(self)
+        except Exception as e:
+            print('Error abrir venFile: ', e)
+
+    def on_btnSalirImportFile_clicked(self,widget):
+        try:
+            variables.venfileclientes.connect('delete-event', lambda w, e: w.hide() or True)
+            variables.venfileclientes.hide()
+        except Exception as e:
+            print("Error boton salir acerca de : ", e)
+
+    def on_btnImportFile_clicked(self, widget):
+        try:
+            document = xlrd.open_workbook(os.path.abspath(str(variables.venfileclientes.get_filename())))
             clientes = document.sheet_by_index(0)
 
             j = 0
@@ -760,3 +773,6 @@ class Eventos:
             funcionesServ.bajaSer(variables.saveCodigoReserva)
         else:
             pass
+
+    def on_btnListadoCli_clicked(self, widget):
+        impresion.listadoCli()

@@ -19,7 +19,7 @@ def basico():
     try:
 
         global bill
-        bill = canvas.Canvas('prueba.pdf', pagesize = A4)
+        bill = canvas.Canvas('factura.pdf', pagesize = A4)
         text1 = 'Bienvenido a nuestro hotel'
         text2 = 'CIF:00000000A'
         bill.drawImage("img/hotel.png", 475, 670, width=64, height=64)
@@ -143,3 +143,68 @@ def factura():
 
     except Exception as e:
         print('Error en el módulo factura ',e)
+
+def listadoCli():
+    try:
+        global lista
+        lista = canvas.Canvas('clientes.pdf', pagesize=A4)
+        lista.setTitle('LISTADO DE CLIENTES')
+        lista.setFont('Helvetica-Bold', size=16)
+        lista.drawString(200, 780, 'LISTADO CLIENTES')
+        lista.setFont('Helvetica-Bold', size=12)
+        lista.drawString(50, 740, 'APELLIDOS')
+        lista.drawString(250, 740, 'NOMBRE')
+        lista.drawString(450, 740, 'DNI')
+        lista.line(50, 760, 540, 760)
+        lista.setFont('Helvetica', size=8)
+        lista.line(50, 730, 540, 730)
+
+        listado = funcionesCli.listar()
+        y = 710
+        pagina = 1
+        for registro in listado:
+
+            if y > 40:
+                lista.drawString(50, y, registro[2])
+                lista.drawString(250, y, registro[3])
+                dni = "• • • • • • " + str(registro[1])[6:]
+                lista.drawString(450, y, dni)
+                # lista.line(50, y-2, 540, y-2)
+                y = y - 15
+            else:
+
+                lista.showPage()
+                canvas.Canvas._pageNumber = pagina + 1
+                y = 710
+                lista.setFont('Helvetica-Bold', size=16)
+                lista.drawString(200, 780, 'LISTADO CLIENTES')
+                lista.drawString(550, 25, str(canvas.Canvas.getPageNumber(lista)))
+                lista.setFont('Helvetica-Bold', size=16)
+                lista.setFont('Helvetica-Bold', size=12)
+                lista.drawString(50, 740, 'APELLIDOS')
+                lista.drawString(250, 740, 'NOMBRE')
+                lista.drawString(450, 740, 'DNI')
+                lista.line(50, 760, 540, 760)
+                lista.setFont('Helvetica', size=8)
+                lista.line(50, 730, 540, 730)
+                lista.setFont('Helvetica', size=8)
+                dni = "• • • • • • " + str(registro[1])[6:]
+                lista.drawString(450, y, dni)
+                lista.drawString(50, y, registro[2])
+                lista.drawString(250, y, registro[3])
+                lista.drawString(450, y, dni)
+                # lista.line(50, y - 2, 540, y - 2)
+
+                y = y - 15
+
+        canvas.Canvas._pageNumber = 1
+        lista.showPage()
+
+        lista.save()
+        dir = os.getcwd()
+        os.system('/usr/bin/xdg-open ' + dir + '/factura.pdf')
+
+
+
+    except Exception as e:
+        print(e)
