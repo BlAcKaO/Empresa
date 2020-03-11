@@ -27,7 +27,7 @@ def insertarSer(fila):
     No retorna nada
     """
     try:
-        conexion.cur.execute('insert into Servicios (concepto,precio, codRes, numHab) values (?,?,?,?)',fila)
+        conexion.cur.execute('insert into Servicios (concepto, precio, iva, codRes, numHab) values (?,?,?,?,?)',fila)
         conexion.conex.commit()
 
     except sqlite3.OperationalError as e:
@@ -137,7 +137,7 @@ def buscarServicios(codRes):
     Retorna el valor del concepto.
     """
     try:
-        conexion.cur.execute('select concepto, precio from Servicios where codRes = ?', (codRes,))
+        conexion.cur.execute('select concepto, precio, iva from Servicios where codRes = ?', (codRes,))
         concepto = conexion.cur.fetchall()
         conexion.conex.commit()
         print(concepto)

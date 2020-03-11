@@ -594,9 +594,10 @@ class Eventos:
                     variables.filaserviciosfac[i][0].set_text(variables.servicios[i][0])
                     variables.filaserviciosfac[i][1].set_text(str(variables.servicios[i][1]))
                     variables.subtotal = variables.subtotal + variables.servicios[i][1]
+                    variables.iva = variables.iva + variables.servicios[i][1]*variables.servicios[i][2]
 
                 variables.subtotal = variables.subtotal + totalNoches
-                variables.iva = totalNoches*0.1 + variables.subtotal*0.2
+                variables.iva = variables.iva + totalNoches*0.1
 
                 variables.lblsubtotal.set_text(str(round(variables.subtotal,2)))
                 variables.lbliva.set_text(str(round(variables.iva,2)))
@@ -688,15 +689,18 @@ class Eventos:
             if variables.chkparking.get_active():
                 concepto = 'parking'
                 precio = 3
-                registroParking = (concepto, precio)
+                iva = 0.1
+                registroParking = (concepto, precio, iva)
             if variables.chkdesayuno.get_active():
                 concepto = 'desayuno'
                 precio = 5
-                registroDesayuno = (concepto, precio)
+                iva = 0.1
+                registroDesayuno = (concepto, precio, iva)
             if variables.chkcomida.get_active():
                 concepto = 'comida'
                 precio = 5
-                registroComida = (concepto, precio)
+                iva = 0.1
+                registroComida = (concepto, precio, iva)
             if registroParking == '' and registroDesayuno == '' and registroComida == '':
                 pass
             else:
@@ -710,7 +714,7 @@ class Eventos:
                     if dato != '':
                         conceptoBusc = funcionesServ.comprobarExistencia(codRes, dato[0])
                         if conceptoBusc == '':
-                            registro = (dato[0], dato[1], codRes, numHab)
+                            registro = (dato[0], dato[1], dato[2], codRes, numHab)
                             funcionesServ.insertarSer(registro)
                             funcionesServ.listadoSer(variables.listservicios)
 
@@ -722,9 +726,10 @@ class Eventos:
         try:
             concepto = variables.entconcepto.get_text()
             precio = variables.entprecioserv.get_text()
+            iva = 0.2
             codRes = variables.filaservicios[0].get_text()
             numHab = variables.filaservicios[1].get_text()
-            registro = (concepto, precio, codRes, numHab)
+            registro = (concepto, precio, iva, codRes, numHab)
 
             conceptoBusc = funcionesServ.comprobarExistencia(codRes, concepto)
 
