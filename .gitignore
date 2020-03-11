@@ -1,9 +1,7 @@
 venv/
 html/
 .idea/
-Exportacion.xls
-listadoclientes.xls
-listadoclientes.xlsx
-prueba.pdf
-Prueba.xls
+*.xlsx
+*.pdf
+*.xls
 __pycache__
